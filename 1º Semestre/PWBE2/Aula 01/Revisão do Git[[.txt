@@ -1,0 +1,20 @@
+echo "# rapsiteteste" >> README.md
+git init
+git add .
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/MoniqueBabler/rapsiteteste.git
+git push -u origin main
+
+
+
+//Clonar/Copiar repositório web
+git clone https://github.com/MoniqueBabler/SENAI-2026.git
+
+//Atualizar Repositorio WEB
+git add .
+git commit -m "algum comentario"  //verifica as alterações nos arquivos
+gti push  // envia as alterações p nuvem
+
+//atualizar repositório local
+git pull
