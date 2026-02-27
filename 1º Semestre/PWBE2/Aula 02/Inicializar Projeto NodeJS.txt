@@ -1,0 +1,13 @@
+//Inicializar Projeto NodeJS
+npm init -y
+
+//Instalar as dependencias
+//express cors mysql2 dotenv
+npm i express cors mysql2 dotenv
+
+//Criar arquivo server.js
+Modelo na aula 02 de PWBE2
+
+//Opcional
+//Instalar dependencia do nodemon
+npm i nodemon
