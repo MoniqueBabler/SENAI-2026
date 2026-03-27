@@ -1,0 +1,133 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+  
+    min-height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url("https://images.unsplash.com/photo-1597200381847-30ec200eeb9a?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8YyVDMyVBOXUlMjBhenVsJTIwY29tJTIwbnV2ZW5zfGVufDB8fDB8fHwwhttps://loremflickr.com/1600/900/clear-blue-sky");
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 20px;
+
+}
+.caixa-maior{
+    background: #ffffff52;
+    opacity: 0.7;
+    border-radius: 25px;
+    padding: 20px;
+    width: 950px;
+    max-width: 450px;
+    color: #ffffff;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.5);
+    transition: 0.3s;
+}
+
+.caixa-maior:hover {
+    transform: scale(1.09);
+}
+
+.input-cidade{
+    border: none;
+    outline: none;
+    padding: 10px;
+    border-radius: 20px;
+    font-size: 20px;
+    background-color: #7c7c7c2b;
+    color: #000000;
+    width: calc(100% - 100px);
+}
+
+.botao-busca{
+    border: none;
+    outline: none;
+    padding: 10px;
+    border-radius: 50px;
+    background-color: #7c7c7c2b;
+    cursor: pointer;
+    float: right;
+}
+
+.img-busca{
+    width: 25px;
+}
+.caixa-media{
+    margin-top: 30px;
+}
+
+.cidade{
+    color: #000000;
+    font-size: 1rem;
+    font-weight: 300;
+}
+.tempo{
+    font-size: 20px;
+    color: #000000;
+    margin-top: 20px;
+}
+
+.caixa-menor{
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+.texto-previsao{
+    color: #000000;
+    margin-left: 20px;
+    text-transform: capitalize;
+}
+
+.umidade{
+    color: #000000;
+    margin-top: 20px;
+}
+
+
+.historico {
+    margin-top: 20px;
+    text-align: center;
+    color:#003e89;
+}
+
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.card {
+    background-color: #ffffff46;
+    padding: 40px;
+    border-radius: 20px;
+    width: 200px;
+    text-align: center;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.5);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.botao-limpar {
+    padding: 10px 20px;
+    border: none;
+    background: #003e89a6;
+    opacity: 0.8;
+    color:#ffffff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.topo-historico {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
