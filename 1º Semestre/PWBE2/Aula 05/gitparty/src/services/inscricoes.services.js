@@ -1,38 +1,113 @@
-const prisma = require("../data/prisma");
+    const prisma = require("../data/prisma");
 
-const limiteInscricoes = async (eventoID) => {
-    const evento = await prisma.eventos.findUnique({
-        where: { id : eventoID },
+    const limiteInscricoes = async (eventoId) => {
+    const evento = await prisma.Eventos.findUnique({
+        where: { id: eventoId },
         include: {
-            inscricoes: true
-        }
+        inscricoes: true,
+        },
     });
 
-    const numeroInscricoes = evento.inscricoes.filter(inscricao => inscricao.status == "CONFIRMADA").length;
-    if(numeroInscricoes > evento.capacidade_maxima) {
+    const numeroInscricoes = evento.inscricoes.filter(
+        (inscricao) => inscricao.status == "CONFIRMADA",
+    ).length;
+
+    if (numeroInscricoes == evento.capacidade_maxima) {
         return "LISTA_ESPERA";
-    }else {
+    } else {
         return "";
     }
+    };
 
-};
-
-const inscricaoDuplicada = async (usuarioId, eventoId) => {
-    const evento = await prisma.eventos.findUnique({
-        where: { id : eventoId },
+    const inscricaoDuplicada = async (usuarioId, eventoId) => {
+    const evento = await prisma.Eventos.findUnique({
+        where: { id: eventoId },
         include: {
-            inscricoes: true
-        }
+        inscricoes: true,
+        },
+    });
+    const inscrito = evento.inscricoes.filter(
+        (inscricao) => inscricao.usuarioId == usuarioId,
+    ).length;
+
+    if (inscrito == 1) {
+        throw new Error("Usuário já inscrito no evento!");
+    }
+    };
+
+    const prazoCancelamento = async (inscricaoId) => {
+    const inscricao = await prisma.Inscricoes.findUnique({
+        where: { id: inscricaoId },
+        include: {
+        evento: true,
+        },
     });
 
-    const inscrito = evento.inscricoes.filter(inscricao => inscricao.usuariosId == usuarioId).length;
+    const agora = new Date();
+    const dataEvento = new Date(inscricao.evento.data);
 
-    if(inscrito == 1){
-        throw new Error("Usuario ja inscrito no evento");
+    const diferencaHoras = (dataEvento - agora) / (1000 * 60 * 60);
+
+    if (diferencaHoras < 24) {
+        throw new Error("Prazo de cancelamento encerrado (menos de 24h).");
     }
-};
+    };
 
-module.exports = {
+    const promoverListaEspera = async (eventoId) => {
+    const proximo = await prisma.Inscricoes.findFirst({
+        where: {
+        eventosId: eventoId,
+        status: "LISTA_ESPERA",
+        },
+        orderBy: {
+        id: "asc",
+        },
+    });
+
+    if (proximo) {
+        await prisma.Inscricoes.update({
+        where: { id: proximo.id },
+        data: { status: "CONFIRMADA" },
+        });
+    }
+    };
+
+    const verificarExcluirEvento = async (eventoId) => {
+    const evento = await prisma.Eventos.findUnique({
+        where: { id: eventoId },
+        include: { inscricoes: true },
+    });
+
+    const agora = new Date();
+
+    if (new Date(evento.data) < agora) {
+        throw new Error("Esse evento já ocorreu e não pode ser excluído.");
+    }
+
+    if (evento.inscricoes.length > 0) {
+        throw new Error(
+        "Esse evento possui participantes e não pode ser excluído.",
+        );
+    }
+    };
+
+    const encerrarEvento = async (eventoId) => {
+    await prisma.Inscricoes.updateMany({
+        where: {
+        eventosId: eventoId,
+        status: "LISTA_ESPERA",
+        },
+        data: {
+        status: "CANCELADA",
+        },
+    });
+    };
+
+    module.exports = {
     limiteInscricoes,
-    inscricaoDuplicada
-}
+    inscricaoDuplicada,
+    prazoCancelamento,
+    promoverListaEspera,
+    verificarExcluirEvento,
+    encerrarEvento
+    };

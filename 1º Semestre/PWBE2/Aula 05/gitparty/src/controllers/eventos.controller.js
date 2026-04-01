@@ -5,7 +5,7 @@ const cadastrar = async (req, res) => {
 
     data.data_evento = new Date(data.data_evento);
 
-    const item = await prisma.eventos.create({
+    const item = await prisma.Eventos.create({
         data
     });
 
@@ -13,7 +13,7 @@ const cadastrar = async (req, res) => {
 };
 
 const listar = async (req, res) => {
-    const lista = await prisma.eventos.findMany();
+    const lista = await prisma.Eventos.findMany();
 
     res.json(lista).status(200).end();
 };
@@ -21,7 +21,7 @@ const listar = async (req, res) => {
 const buscar = async (req, res) => {
     const { id } = req.params;
     
-    const item = await prisma.eventos.findUnique({
+    const item = await prisma.Eventos.findUnique({
         where: { id : Number(id) }
     });
 
@@ -32,7 +32,7 @@ const atualizar = async (req, res) => {
     const { id } = req.params;
     const dados = req.body;
     
-    const item = await prisma.eventos.update({
+    const item = await prisma.Eventos.update({
         where: { id : Number(id) },
         data: dados
     });
@@ -43,7 +43,7 @@ const atualizar = async (req, res) => {
 const excluir = async (req, res) => {
     const { id } = req.params;
     
-    const item = await prisma.eventos.delete({
+    const item = await prisma.Eventos.delete({
         where: { id : Number(id) }
     });
 
