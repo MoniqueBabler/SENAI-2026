@@ -14,7 +14,7 @@ inputBusca.addEventListener('keypress', (e) => {
 
 async function buscarMusica(termo) {
     try{
-        const response = await fetch(`https://itunes.apple.com/search?term=${termo}&,media=music&limit=15`);
+        const response = await fetch(`https://receitasapi-b-2025.vercel.app/`);
         const data = await response.json();
         exibirResultados(data.results);
     } catch(error){

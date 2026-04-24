@@ -2,15 +2,13 @@ const express = require("express");
 
 const router = express.Router();
 
-const { 
-    cadastrar, 
-    listar, 
-    buscar, 
-    atualizar, 
-    excluir } = require("../controllers/usuarios.controller");
-
-        
-const upload = require("../middleware/uploadImagem");
+const {
+  cadastrar,
+  listar,
+  buscar,
+  atualizar,
+  excluir,
+} = require("../controllers/publicacao.controller");
 
 router.post("/cadastrar", cadastrar);
 router.get("/listar", listar);

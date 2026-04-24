@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Receitas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Receitas</h1>
+
+        <button onclick="abrirModal()">+ Nova Receita</button>
+
+        <div id="lista-receitas" class="lista"></div>
+    </div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <h2>Nova Receita</h2>
+
+            <input id="nome" placeholder="Nome">
+            <input id="tipo" placeholder="Tipo (DOCE, SALGADA, BEBIDA)">
+            <input id="ingredientes" placeholder="Ingredientes">
+            <input id="modoFazer" placeholder="Modo de fazer">
+            <input id="img" placeholder="URL da imagem">
+            <input id="custo" placeholder="Custo">
+
+            <button onclick="salvarReceita()">Salvar</button>
+            <button onclick="fecharModal()">Cancelar</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

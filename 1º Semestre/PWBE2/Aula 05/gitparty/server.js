@@ -20,6 +20,10 @@ const usuariosRoutes = require('./src/routes/usuarios.routes');
 
 app.use('/usuarios', usuariosRoutes);
 
+const imagemRoutes = require('./src/routes/imagem.routes');
+
+app.use('/imagem', imagemRoutes);
+
 
 const PORT = process.env.PORT || 3000;
 
