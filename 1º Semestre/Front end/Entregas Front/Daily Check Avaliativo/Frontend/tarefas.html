@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2>Nova Tarefa</h2>
+
+<input id="nome" placeholder="Nome">
+<input id="inicio" type="date">
+<input id="fim" type="date">
+<input id="imagem" placeholder="URL da imagem">
+<textarea id="descricao" placeholder="Descrição"></textarea>
+
+<button onclick="salvar()">Salvar</button>
+
+<script>
+const API = "http://localhost:3000/tarefa";
+
+async function salvar() {
+  await fetch(`${API}/cadastrar`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      nome: nome.value,
+      descricao: descricao.value,
+      inicio: inicio.value,
+      fim: fim.value,
+      imagem: imagem.value
+    })
+  });
+
+  alert("Salvo!");
+}
+</script>
+</body>
+</html>
