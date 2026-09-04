@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema Just in Time</title>
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+</head>
+
+<body>
+  <div class="container">
+
+    <nav>
+      <div class="logo-menu">
+        <img width="60" src="../frontend/docs/logo.png">
+        <h2>Produção de MDF</h2>
+      </div>
+
+      <ul>
+        <li>
+          <a href="produtos.html">
+            <i class="fa-solid fa-box"></i> Produtos
+          </a>
+        </li>
+
+        <li>
+          <a href="producao.html">
+            <i class="fa-solid fa-industry"></i> Produção
+          </a>
+        </li>
+
+        <li>
+          <a href="historico.html">
+            <i class="fa-solid fa-clock-rotate-left"></i> Histórico
+          </a>
+        </li>
+
+      </ul>
+    </nav>
+
+    <main>
+      <div class="topo">
+        <div>
+          <h1>Produtos Cadastrados</h1>
+          <p>Gerencie os produtos e estoques</p>
+          <p id="usuarioLogado"></p> 
+        </div>
+
+        <div>
+          <input type="text" id="buscaProduto" placeholder="Buscar produto...">
+          <button onclick="cadastro.classList.remove('oculto')">
+            <i class="fa-solid fa-plus"></i> Novo Produto
+          </button>
+          <button onclick="logout()">Sair</button>
+        </div>
+      </div>
+
+
+      <div class="tabela">
+        <table>
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Descrição</th>
+              <th>Custo</th>
+              <th>Estoque</th>
+              <th>Estoque Mínimo</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody id="listaProdutos"></tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <div id="cadastro" class="modal oculto">
+    <div class="janela">
+      <h2>Cadastrar Produto</h2>
+      <form id="formCad">
+        <label>Nome</label>
+        <input type="text" id="nome" required>
+
+        <label>Descrição</label>
+        <input type="text" id="descricao">
+
+        <label>Custo</label>
+        <input type="number" id="custo" step="0.01" required>
+
+        <label>Quantidade em Estoque</label>
+        <input type="number" id="quantidade" required>
+
+        <label>Estoque Mínimo</label>
+        <input type="number" id="estoqueMinimo" required>
+
+        <br><br>
+        <button type="button" onclick="cadastro.classList.add('oculto')">Cancelar</button>
+        <button type="submit">Salvar</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="modalMensagem" class="modal oculto">
+    <div class="janela-confirmar">
+      <i class="fa-solid fa-circle-exclamation icone-alerta"></i>
+      <h2>Alerta</h2>
+      <p id="textoMensagem"></p>
+      <button onclick="modalMensagem.classList.add('oculto')">OK</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

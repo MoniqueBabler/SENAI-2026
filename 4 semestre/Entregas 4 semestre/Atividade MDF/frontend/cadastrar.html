@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastro | Sistema Just in Time</title>
+  <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+
+<div class="container">
+
+  <div class="card">
+    <img src="../frontend/docs/logo.png" alt="Logo Produção de MDF" class="logo">
+
+    <p>Crie a sua conta!</p>
+
+    <form id="formUsuario">
+
+      <label>Nome</label>
+      <input
+        type="text"
+        id="nomeUsuario"
+        placeholder="Digite seu nome"
+        required
+      >
+
+      <label>Email</label>
+      <input
+        type="email"
+        id="emailUsuario"
+        placeholder="Digite seu e-mail"
+        required
+      >
+
+      <label>Senha</label>
+      <input
+        type="password"
+        id="senhaUsuario"
+        placeholder="Digite sua senha"
+        required
+      >
+
+      <button type="submit">
+        Cadastrar
+      </button>
+
+    </form>
+
+    <span>
+      Já possui conta?
+      <a href="login.html">Entrar</a>
+    </span>
+
+  </div>
+
+</div>
+
+<script src="cadastroUsuario.js"></script>
+
+</body>
+</html>

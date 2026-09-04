@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Histórico de Ações</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+</head>
+
+<body>
+  <div class="container">
+    <nav>
+      <div class="logo-menu">
+        <img width="60" src="../frontend/docs/logo.png">
+        <h2>Produção de MDF</h2>
+      </div>
+      <ul>
+        <li>
+          <a href="produtos.html">
+            <i class="fa-solid fa-box"></i> Produtos
+          </a>
+        </li>
+
+        <li>
+          <a href="producao.html">
+            <i class="fa-solid fa-industry"></i> Produção
+          </a>
+        </li>
+
+        <li>
+          <a href="historico.html">
+            <i class="fa-solid fa-clock-rotate-left"></i> Histórico
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <main>
+      <div class="topo">
+        <div>
+          <h1>Histórico de Ações</h1>
+          <p>Veja o que cada usuário já fez</p>
+          <p id="usuarioLogado"></p> 
+        </div>
+        <div>
+          <button onclick="logout()">Sair</button>
+        </div>
+      </div>
+
+      <div class="tabela">
+        <table>
+          <thead>
+            <tr>
+              <th>Usuário</th>
+              <th>Ação</th>
+              <th>Produto</th>
+              <th>Quantidade</th>
+              <th>Data</th>
+            </tr>
+          </thead>
+          <tbody id="listaHistorico"></tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

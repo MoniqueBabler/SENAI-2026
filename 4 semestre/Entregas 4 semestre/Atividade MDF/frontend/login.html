@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - Sistema Just in Time</title>
+  <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+  <div class="login-container">
+    <h2>Acesso ao Sistema</h2>
+    <form id="formLogin">
+      <label>Email</label>
+      <input type="email" id="email" required>
+
+      <label>Senha</label>
+      <input type="password" id="senha" required>
+
+      <button type="submit">Entrar</button>
+    </form>
+
+    <div id="mensagemErro" class="erro oculto"></div>
+
+    <div class="acoes-login">
+      <p>Não tem conta?</p>
+      <button onclick="window.location.href='cadastrar.html'">
+        Cadastrar
+      </button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
